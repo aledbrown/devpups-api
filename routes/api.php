@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Route;
 // Get all puppies
 // ------------------------------
 Route::get('/puppies', function () {
-    sleep(1);
+    // sleep(1);
+    // if (rand(0, 10) > 8) {
+    //     return response()->json(['error' => 'Something went wrong', 'message' => 'The server is not available'], 500);
+    // }
     return PuppyResource::collection(Puppy::all());
 });
 
@@ -44,4 +47,5 @@ Route::patch('/puppies/{puppy}/like', function (Puppy $puppy) {
     sleep(1);
     $puppy->likedBy()->toggle(1);
     return new PuppyResource($puppy);
+    // return PuppyResource::collection(Puppy::all());
 });
